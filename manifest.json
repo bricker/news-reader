@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "News Reader",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["filter.js"]
+    }
+  ],
+  "browser_action": {},
+  "background": {
+    "scripts": [ "background.js" ]
+  },
+  "permissions": [ "storage" ]
+}
