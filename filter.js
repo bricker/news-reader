@@ -14,6 +14,26 @@ var replacerFuncs = [
         window.location.reload();
       }
     }
+  ],
+  [
+    /latimes\.com/, function() {
+      var pgs = document.querySelectorAll(".RichTextArticleBody-body>p");
+      writeParagraphs(pgs);
+
+      if (document.body.innerText.match("You've reached your monthly free article limit.")) {
+        window.location.reload();
+      }
+    }
+  ],
+  [
+    /nytimes\.com/, function() {
+      var pgs = document.querySelectorAll("section[name=articleBody]>div>div>p");
+      writeParagraphs(pgs);
+
+      if (document.body.innerText.match("Keep reading The Times by creating a free account or logging in.")) {
+        window.location.reload();
+      }
+    }
   ]
 ];
 
