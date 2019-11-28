@@ -67,3 +67,9 @@ function writeParagraphs(paragraphs) {
 }
 
 makeReader();
+
+chrome.storage.onChanged.addListener(function(changes, areaName) {
+  if (changes.enabled) {
+    window.location.reload();
+  }
+});
