@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "News Reader",
-  "version": "0.1",
+  "version": "1.0.0",
   "content_scripts": [
     {
       "matches": [
@@ -10,10 +10,17 @@
         "*://*.nytimes.com/*",
         "*://*.washingtonpost.com/*"
       ],
-      "js": ["filter.js"]
+      "js": ["src/index.js"]
     }
   ],
-  "browser_action": {},
+  "icons": {
+    "16": "images/enabled-16.png"
+  },
+  "browser_action": {
+    "default_icon": {
+      "16": "images/enabled-16.png"
+    }
+  },
   "background": {
     "scripts": [ "background.js" ],
     "persistent": false

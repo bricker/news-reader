@@ -1,21 +1,29 @@
-function enableAndReload() {
-  chrome.storage.sync.set({enabled: true}, function() {
-    window.location.reload();
-  })
-}
+/* globals chrome */
 
-function disableAndReload() {
-  chrome.storage.sync.set({enabled: false}, function() {
-    window.location.reload();
-  })
-}
+function setIcon() {
+  chrome.storage.sync.get({ enabled: true }, (items) => {
+    const isEnabled = items.enabled;
 
-chrome.browserAction.onClicked.addListener(function(tab) {
-  chrome.storage.sync.get({enabled: true}, function(items) {
-    if (items.enabled) {
-      disableAndReload();
+    if (isEnabled) {
+      chrome.browserAction.setIcon({ path: 'images/enabled-16.png' });
     } else {
-      enableAndReload();
+      chrome.browserAction.setIcon({ path: 'images/disabled-16.png' });
     }
-  })
-});
+  });
+}
+
+function main() {
+  setIcon();
+
+  chrome.browserAction.onClicked.addListener(() => {
+    chrome.storage.sync.get({ enabled: true }, (items) => {
+      const isEnabled = !items.enabled;
+
+      chrome.storage.sync.set({ enabled: isEnabled }, () => {
+        setIcon();
+      });
+    });
+  });
+}
+
+main();
