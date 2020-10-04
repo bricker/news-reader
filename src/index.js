@@ -43,6 +43,16 @@ const extractors = [
     dateSelectors: ['article .font--subhead>.display-date'],
     bodySelectors: ['.article-body p'],
   },
+
+  {
+    name: 'Quartz',
+    urlMatchers: [/qz\.com/],
+    paywallMatchers: ['Start free trial'],
+    headlineSelectors: ['article header h1'],
+    bylineSelectors: ['article>div>div>div>div>div>div>div>span>a'],
+    dateSelectors: ['article>div>div>div>div>div>div>time'],
+    bodySelectors: ['#article-content>p,#article-content>h2'],
+  },
 ];
 
 const resolver = {
@@ -62,7 +72,7 @@ const writer = {
 
     const authors = [];
     bylineNodes.forEach((node) => { authors.push(node.innerHTML); });
-    document.write(`<p>AUTHORS: ${authors.join(', ')}</p>`);
+    document.write(`<p>${authors.join(', ')}</p>`);
 
     dateNodes.forEach((node) => { document.write(`<p>${node.innerHTML}</p>`); });
 

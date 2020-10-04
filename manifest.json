@@ -8,7 +8,8 @@
         "*://*.cnn.com/*",
         "*://*.latimes.com/*",
         "*://*.nytimes.com/*",
-        "*://*.washingtonpost.com/*"
+        "*://*.washingtonpost.com/*",
+        "*://*.qz.com/*"
       ],
       "js": ["src/index.js"]
     }
